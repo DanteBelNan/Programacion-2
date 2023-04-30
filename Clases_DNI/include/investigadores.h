@@ -21,13 +21,13 @@ class investigadores : public DNI
                 this->unidadAcademica = unidadAcademica;
                 return true;
             }
-            cout<<"EL NUMERO DE CARGO ES INCORRECTO, INGRESE UN VALOR ENTRE 1 Y 30: ";
+            cout<<"EL NUMERO DE UNIDAD ACADEMICA ES INCORRECTO, INGRESE UN VALOR ENTRE 1 Y 30: ";
             return false;
         }
         bool setCategoria(int categoria){
             if(categoria >=1 && categoria <=5){
                 this->categoria = categoria;
-                cout<<"EL NUMERO DE CARGO ES INCORRECTO, INGRESE UN VALOR ENTRE 1 Y 5: ";
+                cout<<"EL NUMERO DE CATEGORIA ES INCORRECTO, INGRESE UN VALOR ENTRE 1 Y 5: ";
                 return true;
             }
             return false;
@@ -37,7 +37,7 @@ class investigadores : public DNI
                 this->especialidad = especialidad;
                 return true;
             }
-            cout<<"EL NUMERO DE CARGO ES INCORRECTO, INGRESE UN VALOR ENTRE 1 Y 10: ";
+            cout<<"EL NUMERO DE ESPECIALIDAD ES INCORRECTO, INGRESE UN VALOR ENTRE 1 Y 10: ";
             return false;
         }
 

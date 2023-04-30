@@ -1,6 +1,8 @@
 #include <iostream>
 #include "DNI.h"
 #include "investigadores.h"
+#include "comercio.h"
+#include "NASA.h"
 
 using namespace std;
 
@@ -9,11 +11,8 @@ using namespace std;
 int main()
 {
 
-    investigadores inv;
-    inv.cargar();
-    inv.mostrar();
-    inv.setCategoria(5);
-    cout<<inv.getCategoria();
+    NASA nasa;
+    cout<<nasa.getNombreAstronauta();
 
     return 0;
 }
