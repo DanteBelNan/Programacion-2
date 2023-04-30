@@ -1,5 +1,6 @@
 #include <iostream>
 #include "DNI.h"
+#include "investigadores.h"
 
 using namespace std;
 
@@ -8,9 +9,11 @@ using namespace std;
 int main()
 {
 
+    investigadores inv;
+    inv.cargar();
+    inv.mostrar();
+    inv.setCategoria(5);
+    cout<<inv.getCategoria();
 
-    DNI dni;
-    dni.cargar();
-    dni.mostrar();
     return 0;
 }

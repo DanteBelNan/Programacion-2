@@ -8,7 +8,7 @@
 
 class DNI
 {
-    private:
+    protected:
         int dni;
         char nombre [24];
         char apellido [24];

@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1682723250 source:c:\users\dante\onedrive\escritorio\educacion\utn\programación ii\programacion-2\clases_dni\main.cpp
+1682890233 source:c:\users\dante\onedrive\escritorio\educacion\utn\programación ii\programacion-2\clases_dni\main.cpp
 	<iostream>
 	"DNI.h"
 
-1682724104 c:\users\dante\onedrive\escritorio\educacion\utn\programación ii\programacion-2\clases_dni\include\dni.h
+1682890280 c:\users\dante\onedrive\escritorio\educacion\utn\programación ii\programacion-2\clases_dni\include\dni.h
 	<cstdlib>
 	<cstring>
 	"Fecha.h"
 
-1682721673 c:\users\dante\onedrive\escritorio\educacion\utn\programación ii\programacion-2\clases_dni\include\fecha.h
+1682890268 c:\users\dante\onedrive\escritorio\educacion\utn\programación ii\programacion-2\clases_dni\include\fecha.h
+	<iostream>
 
