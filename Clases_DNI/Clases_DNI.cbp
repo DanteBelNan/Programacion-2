@@ -38,9 +38,15 @@
 		<Unit filename="include/DNI.h" />
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/NASA.h" />
+		<Unit filename="include/casas.h" />
 		<Unit filename="include/comercio.h" />
+		<Unit filename="include/departamentos.h" />
+		<Unit filename="include/direccion.h" />
 		<Unit filename="include/functions.h" />
+		<Unit filename="include/inmobiliaria.h" />
 		<Unit filename="include/investigadores.h" />
+		<Unit filename="include/localComercial.h" />
+		<Unit filename="include/terrenos.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>
