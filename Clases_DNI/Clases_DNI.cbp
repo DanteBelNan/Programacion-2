@@ -37,7 +37,10 @@
 		<Unit filename="funct" />
 		<Unit filename="include/DNI.h" />
 		<Unit filename="include/Fecha.h" />
+		<Unit filename="include/NASA.h" />
+		<Unit filename="include/comercio.h" />
 		<Unit filename="include/functions.h" />
+		<Unit filename="include/investigadores.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

@@ -3,6 +3,11 @@
 #include "investigadores.h"
 #include "comercio.h"
 #include "NASA.h"
+#include "inmobiliaria.h"
+#include "casas.h"
+#include "departamentos.h"
+#include "localComercial.h"
+#include "terrenos.h"
 
 using namespace std;
 
@@ -11,8 +16,7 @@ using namespace std;
 int main()
 {
 
-    NASA nasa;
-    cout<<nasa.getNombreAstronauta();
+
 
     return 0;
 }
