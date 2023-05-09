@@ -94,7 +94,7 @@ class Tarjetas
                 return -1;
             }
             fseek(pTarjetas, 0, SEEK_END);
-            tam = ftell(pTarjetas);
+            tam = ftell(pTarjetas)/sizeof(this);
             fclose(pTarjetas);
             return tam;
         }
