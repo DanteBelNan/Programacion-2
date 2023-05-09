@@ -9,7 +9,7 @@ class inmobiliaria
     protected:
         direccion Direccion;
         Fecha ingreso;
-        Fecha operacion;
+        Fecha alta;
         int superficie;
         int operacion;
 
