@@ -107,12 +107,13 @@ class Tarjetas
                 return -2;
             }
             for(int pos = 0;pos<tamArchivo();pos++){
-                fread(&container, sizeof(this)*pos,1,pTarjetas);
+                fread(&container, sizeof(*this)*pos,1,pTarjetas);
                 if(container.getNumero()==id){
                     fclose(pTarjetas);
                     return pos;
                 }
             }
+
             fclose(pTarjetas);
             return -1;
         }
@@ -147,6 +148,7 @@ class Tarjetas
 
         int cargarRegistro(int numero){
             int pos = buscarID(numero);
+            cout<<numero<<endl;
             if(pos!=-1){
                 FILE *pTarjetas;
                 pTarjetas = fopen("Tarjetas.dat", "rb");

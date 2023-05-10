@@ -9,6 +9,7 @@ int main()
 {
     Tarjetas tarj;
 
+    //tarj.cargar();
     int idBuscar;
     cout<<"Ingrese el id de la tarjeta a buscar: ";
     cin>>idBuscar;
