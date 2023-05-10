@@ -70,6 +70,7 @@ class Tarjetas
         }
 
         void mostrar(){
+            cout<<"-----------------------------------------"<<endl;
             cout<<"NUMERO DE TARJETA: "<<numero<<endl;
             cout<<"FECHA DE ALTA: ";
             alta.Mostrar();
@@ -77,7 +78,6 @@ class Tarjetas
             cout<<"SALDO: "<<saldo<<endl;
             cout<<"ESTADO: ";
             estado ? cout<<"ACTIVA"<<endl : cout<<"DADA DE BAJA"<<endl;
-            cout<<"-----------------------------------------"<<endl;
         }
 
         void darBaja(bool confirmacion){
@@ -106,7 +106,6 @@ class Tarjetas
             if(pTarjetas==NULL){
                 return -2;
             }
-            cout<<tamArchivo();
             for(int pos = 0;pos<tamArchivo();pos++){
                 fread(&container, sizeof(this)*pos,1,pTarjetas);
                 if(container.getNumero()==id){
@@ -125,7 +124,7 @@ class Tarjetas
             if(pTarjetas == NULL){
                 return -1;
             }
-            int resultado = fwrite(this, sizeof(this),1,pTarjetas);
+            int resultado = fwrite(this, sizeof(*this),1,pTarjetas);
             fclose(pTarjetas);
             return resultado;
         }

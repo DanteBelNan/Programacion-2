@@ -7,10 +7,17 @@ using namespace std;
 
 int main()
 {
-    for(int i = 0;i<4;i++){
-        Tarjetas tarj;
-        tarj.cargarRegistro(i);
+    Tarjetas tarj;
+
+    int idBuscar;
+    cout<<"Ingrese el id de la tarjeta a buscar: ";
+    cin>>idBuscar;
+
+    if(tarj.buscarID(idBuscar)>0){
+        tarj.cargarRegistro(idBuscar);
         tarj.mostrar();
+    }else{
+        cout<<"Id inexistente..."<<endl;
     }
     return 0;
 }
