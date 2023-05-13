@@ -1,7 +1,6 @@
 #ifndef TARJETAS_H
 #define TARJETAS_H
 
-#include "Fecha.h"
 
 class Tarjetas
 {
@@ -84,83 +83,6 @@ class Tarjetas
             if(confirmacion){
                 estado = false;
             }
-        }
-
-        int tamArchivo(){
-            FILE *pTarjetas;
-            int tam;
-            pTarjetas = fopen("Tarjetas.dat", "rb");
-            if(pTarjetas == NULL){
-                return -1;
-            }
-            fseek(pTarjetas, 0, SEEK_END);
-            tam = ftell(pTarjetas)/sizeof(this);
-            fclose(pTarjetas);
-            return tam;
-        }
-        int buscarID(int id){
-            Tarjetas container;
-            FILE *pTarjetas;
-
-            pTarjetas = fopen("Tarjetas.dat", "rb");
-            if(pTarjetas==NULL){
-                return -2;
-            }
-            for(int pos = 0;pos<tamArchivo();pos++){
-                fread(&container, sizeof(*this)*pos,1,pTarjetas);
-                if(container.getNumero()==id){
-                    fclose(pTarjetas);
-                    return pos;
-                }
-            }
-
-            fclose(pTarjetas);
-            return -1;
-        }
-
-        int agregarRegistro(){
-            FILE *pTarjetas;
-            pTarjetas = fopen("Tarjetas.dat","ab");
-
-            if(pTarjetas == NULL){
-                return -1;
-            }
-            int resultado = fwrite(this, sizeof(*this),1,pTarjetas);
-            fclose(pTarjetas);
-            return resultado;
-        }
-
-        int guardarRegistro(){
-            int pos = buscarID(numero);
-            if(pos!=-1){
-                FILE *pTarjetas;
-                pTarjetas = fopen("Tarjetas.dat","rb+");
-                if(pTarjetas == NULL){
-                    return -1;
-                }
-                fseek(pTarjetas,pos*sizeof(this),0);
-                int resultado = fwrite(this,sizeof(this),1,pTarjetas);
-                fclose(pTarjetas);
-                return resultado;
-            }
-            return -1;
-        }
-
-        int cargarRegistro(int numero){
-            int pos = buscarID(numero);
-            cout<<numero<<endl;
-            if(pos!=-1){
-                FILE *pTarjetas;
-                pTarjetas = fopen("Tarjetas.dat", "rb");
-                if(pTarjetas==NULL){
-                    return -1;
-                }
-                int resultado = fread(this, sizeof(this)*pos,1,pTarjetas);
-                fclose(pTarjetas);
-                return resultado;
-            }
-            return -1;
-
         }
 
 
