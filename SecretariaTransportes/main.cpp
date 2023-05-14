@@ -8,16 +8,17 @@ using namespace std;
 #include "ArchivoTarjetas.h"
 #include "ArchivoViajes.h"
 
+void punto1()
+{
+    ArchivoTarjetas AT;
+    ArchivoViajes AV;
+    int numTarj;
+    AT.buscarNumero
 
+
+}
 int main()
 {
-
-    Tarjetas tarj;
-    ArchivoTarjetas AT;
-    /*for(int i = 0;i<5;i++){
-        tarj = AT.leerRegistro(i);
-        tarj.mostrar();
-    }*/
 
     return 0;
 }
