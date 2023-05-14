@@ -8,7 +8,7 @@ class Viajes
     private:        int numViaje;
         int numTarjeta;
         int medioTransporte;
-        Fecha viaje;
+        Fecha fechaViaje;
         float importe;
 
     public:
@@ -43,6 +43,16 @@ class Viajes
         int getNumTarjeta(){return numTarjeta;}
         int getMedioTransporte(){return medioTransporte;}
         int getImporte(){return importe;}
+
+        void mostrar(){
+            cout<<"------------------------------------"<<endl;
+            cout<<"Numero de viaje: "<<numViaje<<endl;
+            cout<<"Numero de tarjeta: "<<numTarjeta<<endl;
+            cout<<"Medio de transporte: "<<medioTransporte<<endl; //aqui deberia mostrar segun su num colectivo|subte|tren
+            fechaViaje.Mostrar();
+            cout<<"Importe del viaje: "<<importe<<endl;
+
+        }
 
 
 };
