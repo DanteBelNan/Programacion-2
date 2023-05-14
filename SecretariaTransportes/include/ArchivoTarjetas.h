@@ -41,6 +41,17 @@ class ArchivoTarjetas
             fclose(p);
             return resultado;
         }
+        int buscarNumero(int num){
+            for(int i = 0;i<contarRegistros();i++){
+                Tarjetas tarj;
+                tarj = leerRegistro(i);
+                if(tarj.getNumero() == num){
+                    return i;
+                }
+            }
+            cout<<"Tarjeta no encontrada..."<<endl;
+            return -1;
+        }
 
 };
 

@@ -9,7 +9,7 @@ class Viajes
         int numTarjeta;
         int medioTransporte;
         Fecha viaje;
-        float importeViaje;
+        float importe;
 
     public:
         Viajes() {}
@@ -28,6 +28,21 @@ class Viajes
             }
             return false;
         }
+        bool setMedioTransporte(int medioTransporte){
+            if(medioTransporte>0 && medioTransporte<=3){
+                this->medioTransporte = medioTransporte;
+                return true;
+            }
+            return false;
+        }
+        void setImporte(int importe){
+            this->importe = importe;
+        }
+
+        int getNumViaje(){return numViaje;}
+        int getNumTarjeta(){return numTarjeta;}
+        int getMedioTransporte(){return medioTransporte;}
+        int getImporte(){return importe;}
 
 
 };

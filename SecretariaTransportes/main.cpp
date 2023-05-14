@@ -14,9 +14,10 @@ int main()
 
     Tarjetas tarj;
     ArchivoTarjetas AT;
-    for(int i = 0;i<5;i++){
+    /*for(int i = 0;i<5;i++){
         tarj = AT.leerRegistro(i);
         tarj.mostrar();
-    }
+    }*/
+
     return 0;
 }
