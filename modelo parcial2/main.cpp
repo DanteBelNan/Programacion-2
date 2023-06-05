@@ -48,15 +48,14 @@ class CpuntoA{
         }
 
         CpuntoA leerRegistro(int pos){
-        Proyecto reg;
-        reg.setUbicacion(-1);
-        FILE *p;
-        p=fopen("puntoA.dat", "rb");
-        if(p==NULL) return reg;
-        fseek(p, sizeof(CpuntoA)*pos,0);
-        fread(&reg, sizeof reg,1, p);
-        fclose(p);
-        return reg;
+            CpuntoA reg;
+            FILE *p;
+            p=fopen("puntoA.dat", "rb");
+            if(p==NULL) return reg;
+            fseek(p, sizeof(CpuntoA)*pos,0);
+            fread(&reg, sizeof reg,1, p);
+            fclose(p);
+            return reg;
         }
 
         void mostrar(){
@@ -201,6 +200,17 @@ void puntoD(){
     }
 }
 
+bool modificarComponente(Componente comp, int pos){
+    FILE* p = fopen("componentes.dat", "rb+");
+    if (p == NULL) {
+        return false;
+    }
+    fseek(p, pos * sizeof(Componente), SEEK_SET);
+    bool ok = fwrite(&comp, sizeof(Componente), 1, p);
+    fclose(p);
+    return ok;
+}
+
 void puntoE(){
     ArchivoComponente AC("componentes.dat");
     int tamComp = AC.contarRegistros();
@@ -214,28 +224,6 @@ void puntoE(){
     }
 }
 
-bool modificarComponente(Componente comp, int pos){
-    FILE* p = fopen("componentes.dat", "rb+");
-    if (p == NULL) {
-        return false;
-    }
-    fseek(p, pos * sizeof(Componente), SEEK_SET);
-    bool ok = fwrite(&res, sizeof(Componente), 1, p);
-    fclose(p);
-    return ok;
-}
-
-void puntoF(){
-    int tam = contarRegistrosPA();
-    CpuntoA* pA = new cPuntoA[tam];
-    /* lectura y mostrar */
-    for(int i = 0;i<tam;i++){
-        pA[i] = pa[i].leerRegistro(i);
-        pa[i].mostrar();
-    }
-    delete[] pA;
-}
-
 int contarRegistrosPA(){
     FILE *p;
     p=fopen("puntoA.dat", "rb");
@@ -246,11 +234,27 @@ int contarRegistrosPA(){
     return tam/sizeof(CpuntoA);
 }
 
+void puntoF(){
+    int tam = contarRegistrosPA();
+    CpuntoA* pA = new CpuntoA[tam];
+    for(int i = 0;i<tam;i++){
+        pA[i] = pA[i].leerRegistro(i);
+    }
+    for(int i = 0;i<tam;i++){
+        pA[i].mostrar();
+    }
+    delete[] pA;
+}
+
+
+
 int main()
 {
     puntoA();
     puntoB();
     puntoC();
     puntoD();
+    puntoE();
+    puntoF();
     return 0;
 }
