@@ -205,7 +205,8 @@ class Tarea{
 private:
     int codigo, numeroEmpleado, codigoComponente;
     char nombre[30];
-    int codigoProyecto, categoria, tiempo;
+    char codigoProyecto[5];
+    int categoria, tiempo;
     Fecha fechaTarea;
     bool activo;
 public:
@@ -237,7 +238,7 @@ public:
     int getNumeroEmpleado(){return numeroEmpleado;}
     int getCodigoComponente(){return codigoComponente;}
     const char *getNombre(){return nombre;}
-    int getCodigoProyecto(){return codigoProyecto;}
+    const char *getCodigoProyecto(){return codigoProyecto;}
     int getCategoria(){return categoria;}
     int getTiempo(){return tiempo;}
     Fecha getFechaTarea(){return fechaTarea;}

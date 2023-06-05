@@ -45,14 +45,11 @@ class CpuntoA{
             return resultado;
         }
 
-
-
-
 };
 
 void puntoA(){
-    ArchivoProyecto AP;
-    ArchivoTarea AT;
+    ArchivoProyecto AP("proyectos.dat");
+    ArchivoTarea AT("tareas.dat");
 
     int tamProy = AP.contarRegistros();
     int tamTar = AT.contarRegistros();
@@ -72,7 +69,59 @@ void puntoA(){
         obj.guardarRegistro();
     }
 }
+
+class CpuntoB{
+    private:
+        int numeroEmpleado;
+        char nombre[30];
+        int cantHoras;
+
+    public:
+        CpuntoB(){cantHoras = 0;}
+        void cargar(Empleado obj){
+            this->numeroEmpleado = obj.getNumero();
+            strcpy(this->nombre,obj.getNombre());
+        }
+        void sumarHoras(int horas){
+            this->cantHoras += horas;
+        }
+        int guardarRegistro(){
+            FILE * pFILE;
+            pFILE = fopen("puntoA.dat","ab");
+            if(pFILE == NULL){
+                return -1;
+            }
+            int resultado = fwrite(this, sizeof(*this),1,pFILE);
+            fclose(pFILE);
+            return resultado;
+        }
+
+};
+
+void puntoB(){
+    ArchivoEmpleado AE("empleados.dat");
+    ArchivoTarea AT("tareas.dat");
+
+    int tamEmp = AE.contarRegistros();
+    int tamTar = AT.contarRegistros();
+
+    for(int i = 0;i<tamEmp;i++){
+        Empleado emp;
+        emp = AE.leerRegistro(i);
+        CpuntoB obj;
+        obj.cargar(emp);
+        for(int i2 = 0; i2<tamTar;i2++){
+            Tarea tar;
+            tar = AT.leerRegistro(i2);
+            if(emp.getNumero() == tar.getNumeroEmpleado()){
+                obj.sumarHoras(tar.getTiempo());
+            }
+            obj.guardarRegistro();
+        }
+    }
+}
 int main()
 {
+    puntoA();
     return 0;
 }
