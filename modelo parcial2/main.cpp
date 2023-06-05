@@ -3,9 +3,9 @@
 using namespace std;
 #include "parcial1.h"
 /*
-Generar un archivo con la cantidad de tareas para cada uno de los proyectos
+a) Generar un archivo con la cantidad de tareas para cada uno de los proyectos
 Cada registro debe tener
-a) Código de proyecto, nombre y cantidad de tareas
+Código de proyecto, nombre y cantidad de tareas
 b) Generar un archivo con el tiempo trabajado por cada empleado en el mes de mayo.
 Cada registro debe tener el siguiente formato
 número de empleado,nombre y cantidad de horas
@@ -22,6 +22,7 @@ class CpuntoA{
         char codigoProyecto[5];
         char nombre[30];
         int cantTareas;
+        int activo;
 
     public:
         puntoA(){
@@ -30,6 +31,7 @@ class CpuntoA{
         void cargar(Proyecto proy){
             strcpy(this->codigoProyecto, proy.getCodigoProyecto());
             strcpy(this->nombre, proy.getNombre());
+            this->activo = proy.getActivo();
         }
         void sumTarea(){
             cantTareas++;
@@ -59,14 +61,18 @@ void puntoA(){
         proy = AP.leerRegistro(i);
         CpuntoA obj;
         obj.cargar(proy);
-        for(int i2 = 0;i2<tamTar;i2++){
-            Tarea tarea;
-            tarea = AT.leerRegistro(i2);
-            if(!strcmp(proy.getCodigoProyecto(), tarea.getCodigoProyecto())){
-                obj.sumTarea();
+        if(proy.getActivo()){
+            for(int i2 = 0;i2<tamTar;i2++){
+                Tarea tarea;
+                tarea = AT.leerRegistro(i2);
+                if(tarea.getActivo()){
+                    if(!strcmp(proy.getCodigoProyecto(), tarea.getCodigoProyecto())){
+                        obj.sumTarea();
+                    }
+                }
             }
+            obj.guardarRegistro();
         }
-        obj.guardarRegistro();
     }
 }
 
@@ -75,19 +81,21 @@ class CpuntoB{
         int numeroEmpleado;
         char nombre[30];
         int cantHoras;
+        bool activo;
 
     public:
         CpuntoB(){cantHoras = 0;}
         void cargar(Empleado obj){
             this->numeroEmpleado = obj.getNumero();
             strcpy(this->nombre,obj.getNombre());
+            this-> activo = obj.getActivo();
         }
         void sumarHoras(int horas){
             this->cantHoras += horas;
         }
         int guardarRegistro(){
             FILE * pFILE;
-            pFILE = fopen("puntoA.dat","ab");
+            pFILE = fopen("puntoB.dat","ab");
             if(pFILE == NULL){
                 return -1;
             }
@@ -110,12 +118,16 @@ void puntoB(){
         emp = AE.leerRegistro(i);
         CpuntoB obj;
         obj.cargar(emp);
-        for(int i2 = 0; i2<tamTar;i2++){
-            Tarea tar;
-            tar = AT.leerRegistro(i2);
-            if(emp.getNumero() == tar.getNumeroEmpleado()){
-                if(tar.getFechaTarea().getMes()==5){
-                    obj.sumarHoras(tar.getTiempo());
+        if(emp.getActivo()){
+            for(int i2 = 0; i2<tamTar;i2++){
+                Tarea tar;
+                tar = AT.leerRegistro(i2);
+                if(tar.getActivo()){
+                    if(emp.getNumero() == tar.getNumeroEmpleado()){
+                        if(tar.getFechaTarea().getMes()==5){
+                            obj.sumarHoras(tar.getTiempo());
+                        }
+                    }
                 }
             }
             obj.guardarRegistro();
@@ -130,24 +142,28 @@ void puntoC(){
     int tamEmp = AE.contarRegistros();
     int tamTar = AT.contarRegistros();
 
-        for(int i = 0;i<tamEmp;i++){
+    for(int i = 0;i<tamEmp;i++){
         Empleado emp;
         emp = AE.leerRegistro(i);
-        int cantTareasxCat[5] = {};
-        for(int i2 = 0; i2<tamTar;i2++){
-            Tarea tar;
-            tar = AT.leerRegistro(i2);
-            if(emp.getNumero() == tar.getNumeroEmpleado()){
-                int pos = tar.getCategoria() -1;
-                cantTareasxCat[pos]++;
+        if(emp.getActivo()){
+            int cantTareasxCat[5] = {};
+            for(int i2 = 0; i2<tamTar;i2++){
+                Tarea tar;
+                tar = AT.leerRegistro(i2);
+                if(tar.getActivo()){
+                    if(emp.getNumero() == tar.getNumeroEmpleado()){
+                        int pos = tar.getCategoria() -1;
+                        cantTareasxCat[pos]++;
+                    }
+                }
             }
+            cout<<"----------------------------"<<endl;
+            cout<<emp.getNombre()<<endl;
+            for(int i = 0;i<5;i++){
+                cout<<"categoria: "<<i+1<<": "<<cantTareasxCat[i]<<endl;
+            }
+            cout<<"----------------------------"<<endl;
         }
-        cout<<"----------------------------"<<endl;
-        cout<<emp.getNombre()<<endl;
-        for(int i = 0;i<5;i++){
-            cout<<"categoria: "<<i+1<<": "<<cantTareasxCat[i]<<endl;
-        }
-        cout<<"----------------------------"<<endl;
     }
 }
 int main()
