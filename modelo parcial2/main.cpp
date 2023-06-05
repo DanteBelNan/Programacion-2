@@ -114,17 +114,46 @@ void puntoB(){
             Tarea tar;
             tar = AT.leerRegistro(i2);
             if(emp.getNumero() == tar.getNumeroEmpleado()){
-                obj.sumarHoras(tar.getTiempo());
+                if(tar.getFechaTarea().getMes()==5){
+                    obj.sumarHoras(tar.getTiempo());
+                }
             }
             obj.guardarRegistro();
         }
     }
 }
 
+void puntoC(){
+    ArchivoEmpleado AE("empleados.dat");
+    ArchivoTarea AT("tareas.dat");
 
+    int tamEmp = AE.contarRegistros();
+    int tamTar = AT.contarRegistros();
+
+        for(int i = 0;i<tamEmp;i++){
+        Empleado emp;
+        emp = AE.leerRegistro(i);
+        int cantTareasxCat[5] = {};
+        for(int i2 = 0; i2<tamTar;i2++){
+            Tarea tar;
+            tar = AT.leerRegistro(i2);
+            if(emp.getNumero() == tar.getNumeroEmpleado()){
+                int pos = tar.getCategoria() -1;
+                cantTareasxCat[pos]++;
+            }
+        }
+        cout<<"----------------------------"<<endl;
+        cout<<emp.getNombre()<<endl;
+        for(int i = 0;i<5;i++){
+            cout<<"categoria: "<<i+1<<": "<<cantTareasxCat[i]<<endl;
+        }
+        cout<<"----------------------------"<<endl;
+    }
+}
 int main()
 {
     puntoA();
     puntoB();
+    puntoC();
     return 0;
 }
