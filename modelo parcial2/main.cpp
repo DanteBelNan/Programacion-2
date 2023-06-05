@@ -10,7 +10,7 @@ b) Generar un archivo con el tiempo trabajado por cada empleado en el mes de may
 Cada registro debe tener el siguiente formato
 número de empleado,nombre y cantidad de horas
 
-c) Informar para cada uno de los empleados la cantidad total de tareas realizadas de cada categoría
+c) Informar para cada uno de los empleados la cantidad total de tareas realizadas de cada categoría (5 categorias)
 d) Para cada origen, informar la cantidad de componentes de cada tipo.
 e) Dar de baja a todos los componentes de origen europeo
 f) Listar el archivo del punto a usando asignación dinámica de memoria
@@ -120,8 +120,11 @@ void puntoB(){
         }
     }
 }
+
+
 int main()
 {
     puntoA();
+    puntoB();
     return 0;
 }
