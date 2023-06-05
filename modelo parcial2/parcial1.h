@@ -84,6 +84,7 @@ public:
 
     void setUbicacion(int u){ubicacion=u;}
 
+
 };
 
 class ArchivoProyecto{

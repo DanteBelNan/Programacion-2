@@ -11,8 +11,8 @@ Cada registro debe tener el siguiente formato
 número de empleado,nombre y cantidad de horas
 
 c) Informar para cada uno de los empleados la cantidad total de tareas realizadas de cada categoría (5 categorias)
-d) Para cada origen, informar la cantidad de componentes de cada tipo.
-e) Dar de baja a todos los componentes de origen europeo
+d) Para cada origen, informar la cantidad de componentes de cada tipo. (hay 6 origenes)
+e) Dar de baja a todos los componentes de origen europeo (5)
 f) Listar el archivo del punto a usando asignación dinámica de memoria
 
 */
@@ -22,7 +22,7 @@ class CpuntoA{
         char codigoProyecto[5];
         char nombre[30];
         int cantTareas;
-        int activo;
+        bool activo;
 
     public:
         puntoA(){
@@ -47,6 +47,25 @@ class CpuntoA{
             return resultado;
         }
 
+        CpuntoA leerRegistro(int pos){
+        Proyecto reg;
+        reg.setUbicacion(-1);
+        FILE *p;
+        p=fopen("puntoA.dat", "rb");
+        if(p==NULL) return reg;
+        fseek(p, sizeof(CpuntoA)*pos,0);
+        fread(&reg, sizeof reg,1, p);
+        fclose(p);
+        return reg;
+        }
+
+        void mostrar(){
+            cout<<"------------------------"<<endl;
+            cout<<"Codigo Proy: "<<this->codigoProyecto<<endl;
+            cout<<"Nombre: "<<this->nombre<<endl;
+            cout<<"Cant Tareas: "<<this->cantTareas<<endl;
+            cout<<"------------------------"<<endl;
+        }
 };
 
 void puntoA(){
@@ -166,10 +185,72 @@ void puntoC(){
         }
     }
 }
+
+void puntoD(){
+    ArchivoComponente AC("componentes.dat");
+    int tamComp = AC.contarRegistros();
+    int cantCompxOrig [6] = {};
+    for(int i = 0;i<tamComp;i++){
+        Componente comp;
+        comp = AC.leerRegistro(i);
+        int pos = comp.getOrigen()-1;
+        cantCompxOrig[pos]++;
+    }
+    for(int i = 0;i<6;i++){
+        cout<<cantCompxOrig[i]<<endl;
+    }
+}
+
+void puntoE(){
+    ArchivoComponente AC("componentes.dat");
+    int tamComp = AC.contarRegistros();
+    for(int i = 0;i<tamComp;i++){
+        Componente comp;
+        comp = AC.leerRegistro(i);
+        if(comp.getOrigen()==5){
+            comp.setActivo(false);
+            modificarComponente(comp,i);
+        }
+    }
+}
+
+bool modificarComponente(Componente comp, int pos){
+    FILE* p = fopen("componentes.dat", "rb+");
+    if (p == NULL) {
+        return false;
+    }
+    fseek(p, pos * sizeof(Componente), SEEK_SET);
+    bool ok = fwrite(&res, sizeof(Componente), 1, p);
+    fclose(p);
+    return ok;
+}
+
+void puntoF(){
+    int tam = contarRegistrosPA();
+    CpuntoA* pA = new cPuntoA[tam];
+    /* lectura y mostrar */
+    for(int i = 0;i<tam;i++){
+        pA[i] = pa[i].leerRegistro(i);
+        pa[i].mostrar();
+    }
+    delete[] pA;
+}
+
+int contarRegistrosPA(){
+    FILE *p;
+    p=fopen("puntoA.dat", "rb");
+    if(p==NULL) return -1;
+    fseek(p, 0,2);
+    int tam=ftell(p);
+    fclose(p);
+    return tam/sizeof(CpuntoA);
+}
+
 int main()
 {
     puntoA();
     puntoB();
     puntoC();
+    puntoD();
     return 0;
 }
