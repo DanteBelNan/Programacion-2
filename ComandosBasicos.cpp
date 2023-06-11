@@ -30,3 +30,24 @@ int modificarRegistro(int pos){
     fclose(p);
     return resultado;
 }
+
+//Sobrecarga de operador
+class clase {
+private:
+    int valor;
+public:
+    clase(){valor = 0;}
+
+    int getValor() {
+        return valor;
+    }
+    void setValor(int valor){this->valor = valor}
+
+    // Sobrecarga del operador ==
+    bool operator==(clase obj){
+        if(this->value == obj.value){
+            return true;
+        }
+        return false;
+    }
+};
