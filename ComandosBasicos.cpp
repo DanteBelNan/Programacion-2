@@ -1,3 +1,5 @@
+//INTERACCIÓN CON ARCHIVOS POR SOBRE EL MISMO OBJETO
+
 int guardarRegistro(){
     FILE * pFILE;
     pFILE = fopen("archivo.dat","ab");
@@ -29,6 +31,47 @@ int modificarRegistro(int pos){
     int resultado = fwrite(this, sizeof(Objto), 1, p);
     fclose(p);
     return resultado;
+}
+
+//INTERACCIÓN CON ARCHIVOS SOBRE CLASE ARCHIVO
+int modificarRegistro(Registro reg, int pos)
+{
+  FILE *p = fopen("NOMBRE-DE-ARCHIVO", "rb+");
+  
+  if (p == NULL)
+  {
+    return -1;
+  }
+  
+  fseek(p, pos * sizeof(Registro), SEEK_SET);
+  int resultado = fwrite(&reg, sizeof(Registro), 1, p);
+  fclose(p);
+  return resultado;
+}
+
+int guardarRegistro(Registro reg)
+{
+  FILE *p = fopen("NOMBRE-DE-ARCHIVO", "ab");
+  
+  if (p == NULL)
+  {
+    return -1;
+  }
+  
+  int resultado = fwrite(&reg, sizeof(Registro), 1, p);
+  fclose(p);
+  return resultado;
+}
+
+Registro leerRegistro(int pos){
+    Registro reg;
+    FILE *p;
+    p=fopen("archivo.dat", "rb");
+    if(p==NULL) return reg;
+    fseek(p, sizeof(Registro)*pos,0);
+    fread(&reg, sizeof reg,1, p);
+    fclose(p);
+    return reg;
 }
 
 //Sobrecarga de operador
