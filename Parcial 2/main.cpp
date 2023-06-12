@@ -168,31 +168,13 @@ void punto4(){
     delete[] vObj;
 }
 
-void cargarArchivos(){
-    cout<<"Restaurantes: "<<endl;
-    for(int i = 0;i<5;i++){
-        cout<<i<<endl;
-        Restaurante res;
-        res.cargar();
-        ArchivoRestaurantes AR("restaurantes.dat");
-        AR.guardarRegistro(res);
-    }
-    cout<<"Ventas: "<<endl;
-    for(int i = 26;i<30;i++){
-        cout<<i<<endl;
-        Venta ven;
-        ven.cargar();
-        ArchivoVentas AV("ventas.dat");
-        AV.guardarRegistro(ven);
-    }
-
-}
 
 int main()
 {
+
     punto1();
-    //punto2();
-    //punto4();
+    punto2();
+    punto4();
 
 
 

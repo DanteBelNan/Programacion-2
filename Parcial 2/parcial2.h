@@ -53,16 +53,7 @@ public:
     const char* getGerente(){return gerente;};
     int getCategoria(){return categoria;};
     bool getEstado(){return estado;};
-    void cargar(){
-        cout<<"Cod: ";
-        cin>>codigoRestaurante;
-        cout<<"Nombre: ";
-        cargarCadena(nombre,30);
-        cout<<"Cat: ";
-        cin>>categoria;
-        estado = true;
-        cout<<"---------------------------"<<endl;
-    }
+
 };
 
 class Cliente{
@@ -98,16 +89,6 @@ public:
     float getImporte(){return importe;}
     bool getEstado(){return estado;}
 
-    void cargar(){
-        cout<<"cod: ";
-        cin>>codigoRestaurante;
-        cout<<"dni: ";
-        cin>>DNI;
-        cout<<"Fecha: "<<endl;
-        fechaReserva.Cargar();
-        estado = true;
-        cout<<"---------------------------"<<endl;
-    }
 };
 
 
@@ -138,19 +119,6 @@ public:
         return tam/sizeof(Restaurante);
     }
 
-    int guardarRegistro(Restaurante reg)
-    {
-      FILE *p = fopen("restaurantes.dat", "ab");
-
-      if (p == NULL)
-      {
-        return -1;
-      }
-
-      int resultado = fwrite(&reg, sizeof(Restaurante), 1, p);
-      fclose(p);
-      return resultado;
-    }
 
 };
 
@@ -208,20 +176,6 @@ public:
         int tam=ftell(p);
         fclose(p);
         return tam/sizeof(Venta);
-    }
-
-    int guardarRegistro(Venta reg)
-    {
-      FILE *p = fopen("ventas.dat", "ab");
-
-      if (p == NULL)
-      {
-        return -1;
-      }
-
-      int resultado = fwrite(&reg, sizeof(Venta), 1, p);
-      fclose(p);
-      return resultado;
     }
 };
 
