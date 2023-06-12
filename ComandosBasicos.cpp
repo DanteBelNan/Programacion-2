@@ -99,3 +99,12 @@ public:
 tipoDato* var = new tipoDato[tam];
 
 delete[] var;
+
+
+//Max value
+int numMax = 0;
+for(int i = 1; i < tamArray; i++){
+    if(array[i] > array[numMax]){
+        numMax = i;
+    }
+}

@@ -81,6 +81,6 @@ void punto2(){
 }
 int main()
 {
-    punto2();
+    punto3();
     return 0;
 }
