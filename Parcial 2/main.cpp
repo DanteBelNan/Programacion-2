@@ -92,29 +92,25 @@ void punto1(){
         Restaurante res;
         res = AR.leerRegistro(i);
 
+        if(res.getEstado()){
+            if(!strcmp(nombreRes,res.getNombre())){ //entro al restaurante
 
-        bool esValido = true;
-        esValido = res.getEstado();
+                for(int i2 = 0; i2<tamAV;i2++){
+                    Venta venta;
+                    venta = AV.leerRegistro(i2);
+                    if(venta.getEstado()){
+                        if(res.getCodigoRestaurante() == venta.getCodigoRestaurante()){
+                            Cpunto1 obj;
+                            obj.setCodigoRestaurante(venta.getCodigoRestaurante());
+                            obj.setFechaReserva(venta);
+                            obj.setDNI(venta.getDNI());
 
-        if(!strcmp(nombreRes,res.getNombre())){ //entro al restaurante
-
-            for(int i2 = 0; i2<tamAV;i2++){
-                Venta venta;
-                venta = AV.leerRegistro(i2);
-                if(res.getCodigoRestaurante() == venta.getCodigoRestaurante()){
-                    esValido = venta.getEstado();
-                    Cpunto1 obj;
-                    obj.setCodigoRestaurante(venta.getCodigoRestaurante());
-                    obj.setFechaReserva(venta);
-                    obj.setDNI(venta.getDNI());
-                    if(esValido){
-                        AP1.guardarRegistro(obj);
+                            AP1.guardarRegistro(obj);
+                        }
                     }
                 }
             }
         }
-
-
     }
 
     int tam = AP1.contarRegistros();
