@@ -94,3 +94,8 @@ public:
         return false;
     }
 };
+
+//Memoria dinamica
+tipoDato* var = new tipoDato[tam];
+
+delete[] var;
