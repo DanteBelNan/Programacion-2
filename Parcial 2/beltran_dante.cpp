@@ -185,8 +185,8 @@ void punto4(){
 int main()
 {
 
-    //punto1();
-    //punto2();
+    punto1();
+    punto2();
     punto4();
 
 
