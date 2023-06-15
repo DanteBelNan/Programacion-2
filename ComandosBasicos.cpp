@@ -102,9 +102,11 @@ delete[] varName;
 
 
 //Max value
+int tamVector = 5; //un ejemplo
+int vector[tamVector];
 int numMax = 0;
-for(int i = 1; i < tamArray; i++){
-    if(array[i] > array[numMax]){
+for(int i = 1; i < tamVector; i++){
+    if(vector[i] > vector[numMax]){
         numMax = i;
     }
 }
