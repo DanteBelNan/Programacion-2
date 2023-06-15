@@ -110,3 +110,5 @@ for(int i = 1; i < tamVector; i++){
         numMax = i;
     }
 }
+
+cout<<"El valor maximo es "<<vector[numMax]<<endl;
