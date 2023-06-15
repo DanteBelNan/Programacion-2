@@ -96,9 +96,9 @@ public:
 };
 
 //Memoria dinamica
-tipoDato* var = new tipoDato[tam];
+tipoDato* varName = new tipoDato[tam];
 
-delete[] var;
+delete[] varName;
 
 
 //Max value
