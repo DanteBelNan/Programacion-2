@@ -80,7 +80,62 @@ void punto2(){
 
 }
 
+class Cpunto3{
+    private:
+        int codigoAvion;
+        char nombre[30];
+        char marca[30];
 
+    public:
+        void cargar(Avion av){
+            this->codigoAvion = av.getCodigoAvion();
+            strcpy(this->nombre,av.getNombre());
+            strcpy(this->marca,av.getMarca());
+        }
+
+        void mostrar(){
+            cout<<this->codigoAvion<<endl;
+            cout<<this->nombre<<endl;
+            cout<<this->marca<<endl;
+        }
+
+};
+
+void punto3(){
+    ArchivoAvion AC;
+    int tamAC = AC.contarRegistros();
+
+    int tam = 0;
+    for(int i = 0;i<tamAC;i++){
+        Avion av;
+        av = AC.leerRegistro(i);
+        if(av.getTipo() == 1){
+            tam++;
+
+        }
+    }
+
+    Cpunto3* vObj = new Cpunto3[tam];
+    int asgn = 0;
+    for(int i = 0;i<tamAC;i++){
+        Avion av;
+        av = AC.leerRegistro(i);
+        if(av.getTipo() == 1){
+            vObj[asgn].cargar(av);
+            vObj[asgn].mostrar();
+            asgn++; //si comento esta linea pasan cosas locas
+            cout<<"--------------------"<<endl;
+        }
+    }
+
+    for(int i = 0;i<tam;i++){
+        vObj[i].mostrar();
+        cout<<"---------------------"<<endl;
+    }
+
+    delete[] vObj;
+
+}
 
 int main()
 {
