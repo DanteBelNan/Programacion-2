@@ -79,6 +79,49 @@ void punto2(){
     }
 
 }
+
+void copiarAvion(Avion a1, Avion a2){
+    a1.setActivo(a2.getActivo());
+    a1.setCantidadAsientos(a2.getCantidadAsientos());
+    a1.setCodigoAvion(a2.getCodigoAvion());
+    a1.setMarca(a2.getMarca());
+    a1.setNombre(a2.getNombre());
+    a1.setTipo(a2.getTipo());
+}
+
+void punto3(){
+    ArchivoAvion AC;
+    int tamAC = AC.contarRegistros();
+
+    int tam = 0;
+    for(int i = 0;i<tamAC;i++){
+        Avion avion;
+        avion = AC.leerRegistro(i);
+        if(avion.getTipo()==1){
+            tam++;
+        }
+    }
+
+
+    Avion* avionPropio = new Avion[tam];
+    int assigned = 0;
+    for(int i = 0;i<tamAC;i++){
+        Avion avion;
+        avion = AC.leerRegistro(i);
+        if(avion.getTipo()==1){
+            avion.Mostrar();
+            copiarAvion(avionPropio[assigned], avion);
+            assigned++;
+        }
+    }
+
+    for(int i = 0;i<tam;i++){
+        //avionPropio[i].Mostrar();
+    }
+
+
+}
+
 int main()
 {
     punto3();
