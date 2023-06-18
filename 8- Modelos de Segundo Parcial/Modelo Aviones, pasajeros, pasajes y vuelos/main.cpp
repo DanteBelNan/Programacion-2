@@ -171,7 +171,6 @@ void punto5(){
             Pasaje pasaje;
             pasaje = APs.leerRegistro(i2);
             if(pasaje.getNumeroPasajero() == pasajero.getNumeroPasajero()){
-                cout<<"Conexion hecha"<<endl;
                 if(pasaje.getFechaCompra().getAnio() == year){
                     compro2023 = true;
                 }
@@ -179,10 +178,24 @@ void punto5(){
         }
         if(compro2023){
             escribirRegistroP5(pasajero);
-            cout<<"DOU";
         }
     }
 
+}
+
+class Cpunto6{
+    private:
+
+    public:
+};
+
+class Apunto6{
+    private:
+
+    public:
+};
+
+void punto6(){
 }
 
 int main()
