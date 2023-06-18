@@ -130,7 +130,7 @@ void punto3(){
         av = AC.leerRegistro(i);
         if(av.getTipo() == 1){
             //vObj[asgn].cargar(av);
-            vObj[asgn] = av;
+            vObj[asgn] = av; //segun el punto 4
             vObj[asgn].mostrar();
             asgn++; //si comento esta linea pasan cosas locas
             cout<<"--------------------"<<endl;
@@ -146,8 +146,47 @@ void punto3(){
 
 }
 
+
+bool escribirRegistroP5(Pasajero reg){
+    FILE *p;
+    p=fopen("punto5.dat", "ab");
+    if(p==NULL) return false;
+    bool escribio = fwrite(&reg, sizeof reg, 1, p);
+    fclose(p);
+    return escribio;
+}
+
+void punto5(){
+    int year = 2022;
+    ArchivoPasajeros AP;
+    ArchivoPasajes APs;
+    int tamAP = AP.contarRegistros();
+    int tamAPs = APs.contarRegistros();
+
+    for(int i = 0;i<tamAP;i++){
+        Pasajero pasajero;
+        bool compro2023 = false;
+        pasajero = AP.leerRegistro(i);
+        for(int i2 = 0;i2<tamAPs;i2++){
+            Pasaje pasaje;
+            pasaje = APs.leerRegistro(i2);
+            if(pasaje.getNumeroPasajero() == pasajero.getNumeroPasajero()){
+                cout<<"Conexion hecha"<<endl;
+                if(pasaje.getFechaCompra().getAnio() == year){
+                    compro2023 = true;
+                }
+            }
+        }
+        if(compro2023){
+            escribirRegistroP5(pasajero);
+            cout<<"DOU";
+        }
+    }
+
+}
+
 int main()
 {
-    punto3();
+    punto5();
     return 0;
 }
