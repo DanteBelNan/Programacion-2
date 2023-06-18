@@ -99,6 +99,14 @@ class Cpunto3{
             cout<<this->marca<<endl;
         }
 
+
+
+        void operator =(Avion av){
+            this->codigoAvion = av.getCodigoAvion();
+            strcpy(this->nombre,av.getNombre());
+            strcpy(this->marca,av.getMarca());
+        }
+
 };
 
 void punto3(){
@@ -121,7 +129,8 @@ void punto3(){
         Avion av;
         av = AC.leerRegistro(i);
         if(av.getTipo() == 1){
-            vObj[asgn].cargar(av);
+            //vObj[asgn].cargar(av);
+            vObj[asgn] = av;
             vObj[asgn].mostrar();
             asgn++; //si comento esta linea pasan cosas locas
             cout<<"--------------------"<<endl;
