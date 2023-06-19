@@ -197,7 +197,7 @@ class Cpunto6{
         }
         checkVuelo(Vuelo vu){
             if(this->codigoAvion == 1){
-                cantVuelos++; //a la clase Vuelo le falta el miembro codigo avion, y sus setters+getters
+                cantVuelos++;
             }
         }
 };
