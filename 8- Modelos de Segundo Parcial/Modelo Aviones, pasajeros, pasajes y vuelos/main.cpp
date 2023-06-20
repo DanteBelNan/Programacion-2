@@ -191,13 +191,15 @@ class Cpunto6{
 
     public:
         Cpunto6(Avion av){
-            cantVuelos = 0
+            cantVuelos = 0;
             this->codigoAvion = av.getCodigoAvion();
             strcpy(this->nombre,av.getNombre());
         }
+
         checkVuelo(Vuelo vu){
             if(this->codigoAvion == 1){
                 cantVuelos++; //a la clase Vuelo le falta el miembro codigo avion, y sus setters+getters
+
             }
         }
 };
@@ -221,10 +223,29 @@ class Apunto6{
 };
 
 void punto6(){
+    ArchivoAvion AA;
+    ArchivoVuelo AV;
+    Apunto6 AP6;
+
+    int tamAA = AA.contarRegistros();
+    int tamAV = AV.contarRegistros();
+
+    for(int i = 0;i<tamAA;i++){
+        Avion avion;
+        avion = AA.leerRegistro(i);
+        Cpunto6 obj(avion);
+        for(int i2 = 0;i2<tamAV;i2++){
+            Vuelo vuelo;
+            vuelo = AV.leerRegistro(i2);
+
+            obj.checkVuelo(vuelo);
+        }
+        AP6.guardarRegistro(obj);
+    }
 }
 
 int main()
 {
-    punto5();
+    punto6();
     return 0;
 }
