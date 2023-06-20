@@ -231,6 +231,16 @@ class Apunto6{
             fclose(p);
             return reg;
         }
+
+        int contarRegistros(){
+            FILE *p;
+            p=fopen("punto6.dat", "rb");
+            if(p==NULL) return -1;
+            fseek(p, 0,2);
+            int tam=ftell(p);
+            fclose(p);
+            return tam/sizeof(Cpunto6);
+        }
 };
 
 void punto6(){
@@ -253,6 +263,9 @@ void punto6(){
         }
         AP6.guardarRegistro(obj);
     }
+}
+
+void punto7(){
 }
 
 int main()
