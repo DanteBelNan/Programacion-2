@@ -74,6 +74,16 @@ Registro leerRegistro(int pos){
     return reg;
 }
 
+int contarRegistros(){
+    FILE *p;
+    p=fopen(nombre, "rb");
+    if(p==NULL) return -1;
+    fseek(p, 0,2);
+    int tam=ftell(p);
+    fclose(p);
+    return tam/sizeof(Registro);
+}
+
 //Sobrecarga de operador
 class clase {
 private:
