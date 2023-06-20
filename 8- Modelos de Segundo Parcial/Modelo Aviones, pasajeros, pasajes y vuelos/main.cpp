@@ -196,11 +196,14 @@ class Cpunto6{
             strcpy(this->nombre,av.getNombre());
         }
 
-        checkVuelo(Vuelo vu){
+        void checkVuelo(Vuelo vu){
             if(this->codigoAvion == 1){
                 cantVuelos++; //a la clase Vuelo le falta el miembro codigo avion, y sus setters+getters
 
             }
+        }
+        void Mostrar(){
+            cout<<codigoAvion<<endl<<nombre<<endl<<cantVuelos<<endl;
         }
 };
 
@@ -266,6 +269,14 @@ void punto6(){
 }
 
 void punto7(){
+    Apunto6 AP6;
+    int tam = AP6.contarRegistros();
+
+    Cpunto6* vObj = new Cpunto6[tam];
+
+    for(int i = 0;i<tam;i++){
+        vObj[i].Mostrar();
+    }
 }
 
 int main()
