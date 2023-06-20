@@ -220,6 +220,17 @@ class Apunto6{
             fclose(p);
             return resultado;
         }
+
+        Cpunto6 leerRegistro(int pos){
+            Cpunto6 reg;
+            FILE *p;
+            p=fopen("punto6.dat", "rb");
+            if(p==NULL) return reg;
+            fseek(p, sizeof(Cpunto6)*pos,0);
+            fread(&reg, sizeof reg,1, p);
+            fclose(p);
+            return reg;
+        }
 };
 
 void punto6(){
