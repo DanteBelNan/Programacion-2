@@ -1,6 +1,8 @@
 #include <iostream>
-
+#include <cstring>
 using namespace std;
+
+#include "parcial1.h"
 
 int main()
 {
