@@ -1,4 +1,4 @@
-///Ejercicio: Parcial  de Programación II
+///Ejercicio: Parcial  de Programaciï¿½n II
 ///Autor:DEK
 ///Fecha:
 ///Comentario:
@@ -17,9 +17,9 @@ void cargarCadena(char *pal, int tam){
 
 
 class Fecha{
-private:
+    private:
     int dia,mes, anio;
-public:
+    public:
     bool operator==(Fecha obj){
         if(dia != obj.dia) return false;
         if(mes != obj.mes) return false;
@@ -47,28 +47,28 @@ public:
 };
 
 class Ciudades{
-private:
-    int _CodigoCiudad;
-    char _Nombre[30];
-    int _CodigoProvincia;
+    private:
+        int _CodigoCiudad;
+        char _Nombre[30];
+        int _CodigoProvincia;
 
-public:
-    void Ciudades::Cargar(){
-        int codigoCiudad, codigoProvincia;
-        char nombre[29];
+    public:
+        void Ciudades::Cargar(){
+            int codigoCiudad, codigoProvincia;
+            char nombre[29];
 
-        cout<<"CODIGO DE LA CIUDAD: ";
-        cin>>codigoCiudad;
-        setCodigoCiudad(codigoCiudad);
-        cin.ignore();
-        cout<<"NOMBRE: ";
-        cin.getline(nombre,29);
-        setNombre(nombre);
-        cout<<"CODIGO DE LA PROVINCIA: ";
-        cin>>codigoProvincia;
-        setCodigoProvincia(codigoProvincia);
+            cout<<"CODIGO DE LA CIUDAD: ";
+            cin>>codigoCiudad;
+            setCodigoCiudad(codigoCiudad);
+            cin.ignore();
+            cout<<"NOMBRE: ";
+            cin.getline(nombre,29);
+            setNombre(nombre);
+            cout<<"CODIGO DE LA PROVINCIA: ";
+            cin>>codigoProvincia;
+            setCodigoProvincia(codigoProvincia);
 
-    }
+        }
 
     void setCodigoCiudad(int ciudad){_CodigoCiudad = ciudad;}
     void setNombre(const char* nombre){strcpy(_Nombre,nombre);}
