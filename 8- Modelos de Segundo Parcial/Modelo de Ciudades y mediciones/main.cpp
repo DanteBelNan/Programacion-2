@@ -72,6 +72,52 @@ void puntoA(){
     }
 }
 
+
+void puntoB(){
+    ArchivoCiudades AC;
+    ArchivoMediciones AM;
+
+    int tamAC = AC.contarRegistros();
+    int tamAM = AM.contarRegistros();
+
+    int minDiasNiebla = 0;
+    char nombreCiudad[30];
+    Ciudades firstCity;
+    firstCity = AC.leerRegistro(0);
+    strcpy(nombreCiudad, firstCity.getNombre());
+    for(int i =0;i<tamAM;i++){
+        Mediciones med;
+        med = AM.leerRegistro(i);
+        if(med.getCiudad() == firstCity.getCodigoCiudad()){
+            if(med.getVisibilidad() != 3){
+                minDiasNiebla++;
+            }
+        }
+    }
+
+    for(int i = 0;i<tamAC;i++){
+        Ciudades ciudad;
+        ciudad = AC.leerRegistro(i);
+        int newminDiasNiebla = 0;
+        for(int i2 = 0;i2<tamAM;i2++){
+            Mediciones med;
+            med = AM.leerRegistro(i2);
+            if(ciudad.getCodigoCiudad() == med.getCiudad()){
+                if(med.getVisibilidad() != 3 && med.getVisibilidad() != 2){
+                    newminDiasNiebla++;
+                }
+            }
+        }
+
+        if(newminDiasNiebla < minDiasNiebla){
+            minDiasNiebla = newminDiasNiebla;
+            strcpy(nombreCiudad,ciudad.getNombre());
+        }
+    }
+
+    cout<<"La ciudad con menos dias de niebla y neblina es "<<nombreCiudad<<endl;
+}
+
 int main()
 {
     cout << "Hello world!" << endl;
