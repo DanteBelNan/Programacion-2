@@ -23,7 +23,7 @@ class CpuntoA{
 
     void sumaMedicion(Mediciones med){
         if(med.getCiudad() == this->codigoCiudad){
-            if(med.getVisibilidad()>4000){
+            if(med.getVisibilidad()>4){
                 this->cantMediciones++;
             }
         }
