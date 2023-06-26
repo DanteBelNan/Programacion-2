@@ -17,8 +17,6 @@ class Cpunto1{
 
         Cpunto1(Asignacion asig){
             this->codigo = asig.getCodigoProyecto();
-
-            cantAsignaciones = 0; //Este se lo asigno ya que sino, no tendria sentido el propio ejercicio
         }
 
         void cargar(Proyecto proy){
@@ -151,7 +149,9 @@ void punto5(){
     }
 
     for(int i = 0;i<tamAP;i++){
-        vProy[i].Mostrar();
+        if(vProy[i].getEstado() == true){
+            vProy[i].Mostrar();
+        }
     }
 
 
@@ -160,8 +160,8 @@ void punto5(){
 
 int main()
 {
-    //punto1();
-    //punto2();
+    punto1();
+    punto2();
     punto5();
     return 0;
 }
