@@ -37,13 +37,9 @@ class Cpunto1{
             }else{
                 return false;
             }
+
             //return (this->codigo != value);
             //Este otro tipo de return es mas eficaz, ya que utiliza en una sola linea, y opera directamente con el primer condicional
-        }
-        void Mostrar(){
-            cout<<"Codigo: "<<codigo<<endl;
-            cout<<"Descripcion: "<<descripcion<<endl;
-            cout<<"Cant: "<<cantAsignaciones<<endl;
         }
 };
 
@@ -102,16 +98,16 @@ void punto1(){
             obj.cargar(proy);
             for(int i2 = 0;i2<tamAA;i2++){
                 Asignacion asig;
-                asig = AA.leerRegistro(i); //ACA ES UN I2, NO UN I
+                asig = AA.leerRegistro(i);
                 if(asig.getEstado() == true){
                     if(asig.getCodigoProyecto() == obj.getCodigo()){
                         obj.sumaAsignacion();
-
                     }
                 }
             }
 
             AP1.guardarRegistro(obj);
+
         }
     }
 
@@ -176,9 +172,8 @@ void punto5(){
 
 int main()
 {
-    //punto1();
-    //punto2();
-    //punto5();
-
+    punto1();
+    punto2();
+    punto5();
     return 0;
 }
