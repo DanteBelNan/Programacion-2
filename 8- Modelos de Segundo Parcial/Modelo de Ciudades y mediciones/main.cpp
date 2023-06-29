@@ -28,6 +28,12 @@ class CpuntoA{
             }
         }
     }
+
+    void operator == (Ciudades ciu){
+        this->codigoCiudad = ciu.getCodigoCiudad();
+        strcpy(this->nombreCiudad,ciu.getNombre());
+        this->cantMediciones = 0;
+    }
 };
 
 class ApuntoA{
