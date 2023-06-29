@@ -78,6 +78,10 @@ class Ciudades{
     int getCodigoCiudad(){return _CodigoCiudad;}
     char* getNombre(){return _Nombre;}
     int getCodigoProvincia(){return _CodigoProvincia;}
+
+    void Mostrar(){
+        cout<<_CodigoCiudad<<endl<<_Nombre<<endl<<_CodigoProvincia<<endl<<endl;
+    }
 };
 
 class ArchivoCiudades{
