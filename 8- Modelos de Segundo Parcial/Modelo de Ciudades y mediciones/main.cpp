@@ -118,8 +118,32 @@ void puntoB(){
     cout<<"La ciudad con menos dias de niebla y neblina es "<<nombreCiudad<<endl;
 }
 
+void puntoC(){
+    ArchivoCiudades AC;
+    int tam = AC.contarRegistros();
+    Ciudades* vCiudades = new Ciudades[tam];
+
+    if(vCiudades == nullptr){
+        return;
+    }
+
+    for(int i = 0;i<tam;i++){
+        vCiudades[i] = AC.leerRegistro(i);
+    }
+
+    int codigoDeseado = 5; //hardcodeado para no meter inputs
+
+    for(int i = 0;i<tam;i++){
+        if(vCiudades[i].getCodigoCiudad() == codigoDeseado){
+            vCiudades[i].Mostrar();
+        }
+    }
+
+    delete[] vCiudades;
+}
+
 int main()
 {
-    cout << "Hello world!" << endl;
+    
     return 0;
 }
